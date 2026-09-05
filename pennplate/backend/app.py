@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import os
 from pathlib import Path
 
 from flask import Flask, jsonify, request
@@ -24,6 +25,15 @@ ALLOWED_DEV_ORIGINS = {
 }
 
 
+def allowed_origins() -> set[str]:
+    configured = os.environ.get("FRONTEND_ORIGINS", "")
+    return ALLOWED_DEV_ORIGINS | {
+        origin.strip().rstrip("/")
+        for origin in configured.split(",")
+        if origin.strip()
+    }
+
+
 def create_app(db_client=None) -> Flask:
     app = Flask(__name__)
     app.config["DB_CLIENT"] = db_client or SupabaseReadClient()
@@ -39,9 +49,10 @@ def create_app(db_client=None) -> Flask:
     @app.after_request
     def add_cors_headers(response):
         request_origin = request.headers.get("Origin")
+        origins = allowed_origins()
 
         response.headers["Access-Control-Allow-Origin"] = (
-            request_origin if request_origin in ALLOWED_DEV_ORIGINS else "http://localhost:5173"
+            request_origin if request_origin in origins else "http://localhost:5173"
         )
         response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
         response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
