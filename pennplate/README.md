@@ -50,6 +50,11 @@ python3 scraper/ingest.py --hall 1920-commons
 python3 scraper/ingest.py --hall english-house
 ```
 
+The repository includes a GitHub Actions workflow at `.github/workflows/daily-ingest.yml`.
+Add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` as GitHub Actions secrets, then run it
+manually with a `YYYY-MM-DD` date to backfill a menu or let it run daily. Ingestion is
+idempotent for the same hall, date, meal, station, and normalized item name.
+
 ## Phase 3 Backend
 
 ```bash

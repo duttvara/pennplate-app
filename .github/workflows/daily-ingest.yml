@@ -1,0 +1,37 @@
+name: Ingest Penn Dining menus
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+    inputs:
+      menu_date:
+        description: "Menu date to ingest (YYYY-MM-DD); blank uses today in New York"
+        required: false
+        type: string
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      REQUESTED_DATE: ${{ inputs.menu_date }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install scraper dependencies
+        working-directory: pennplate
+        run: pip install -r scraper/requirements.txt
+
+      - name: Ingest all dining halls
+        working-directory: pennplate
+        run: |
+          MENU_DATE="${REQUESTED_DATE:-$(TZ=America/New_York date +%F)}"
+          python scraper/ingest.py --hall hill-house --date "$MENU_DATE"
+          python scraper/ingest.py --hall 1920-commons --date "$MENU_DATE"
+          python scraper/ingest.py --hall english-house --date "$MENU_DATE"
