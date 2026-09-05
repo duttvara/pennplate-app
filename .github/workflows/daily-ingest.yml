@@ -32,6 +32,6 @@ jobs:
         working-directory: pennplate
         run: |
           MENU_DATE="${REQUESTED_DATE:-$(TZ=America/New_York date +%F)}"
-          python scraper/ingest.py --hall hill-house --date "$MENU_DATE"
-          python scraper/ingest.py --hall 1920-commons --date "$MENU_DATE"
-          python scraper/ingest.py --hall english-house --date "$MENU_DATE"
+          python scraper/ingest.py --hall hill-house --date "$MENU_DATE" --skip-unavailable
+          python scraper/ingest.py --hall 1920-commons --date "$MENU_DATE" --skip-unavailable
+          python scraper/ingest.py --hall english-house --date "$MENU_DATE" --skip-unavailable

@@ -109,6 +109,11 @@ def main() -> None:
     parser.add_argument("--html", help="Parse a saved cafe HTML file instead of requesting the site.")
     parser.add_argument("--date", help="Fetch and store a specific menu date, YYYY-MM-DD.")
     parser.add_argument("--meal", choices=["breakfast", "lunch", "dinner"], help="Only ingest one meal.")
+    parser.add_argument(
+        "--skip-unavailable",
+        action="store_true",
+        help="Skip a hall when Bon Appetit publishes no menu payload for the date.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Parse and summarize without contacting Supabase.")
     args = parser.parse_args()
 
@@ -121,6 +126,12 @@ def main() -> None:
             menu_date=args.date,
             dry_run=args.dry_run,
         )
+    except ValueError as exc:
+        if args.skip_unavailable and str(exc) == "Could not find Bamco.menu_items JSON in page HTML":
+            LOGGER.warning("No published menu payload for %s on %s; skipping", args.hall, args.date or "today")
+            print(f"No menu published for {args.hall}; skipped.")
+            return
+        raise
     except SupabaseConfigError as exc:
         raise SystemExit(f"{exc}. Copy .env.example to .env and export the values before ingestion.") from exc
 
