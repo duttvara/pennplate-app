@@ -34,19 +34,19 @@ export default function Results() {
   }
 
   return (
-    <div className="page-wrap mx-auto max-w-6xl px-4 py-9 sm:px-6 lg:py-12">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <Link to="/" className="mb-4 inline-flex items-center gap-2 text-sm font-bold text-cranberry hover:text-ink">
             <ArrowLeft aria-hidden="true" size={16} />
             Change filters
           </Link>
-          <h1 className="display-title text-3xl font-black leading-none sm:text-4xl">Dining hall comparison</h1>
+          <h1 className="text-3xl font-black leading-tight">Dining hall comparison</h1>
           <div className="mt-3 flex flex-wrap gap-2">
             {filterLabelParts(filters).map((part) => (
               <span
                 key={part}
-                className="result-chip rounded-md px-3 py-2 text-sm font-bold leading-none"
+                className="rounded-md border border-cranberry/20 bg-card px-4 py-3 text-base font-bold leading-none text-ink/75 shadow-soft"
               >
                 {part}
               </span>

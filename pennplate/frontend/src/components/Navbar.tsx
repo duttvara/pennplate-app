@@ -4,20 +4,20 @@ import AuthControl from "./AuthControl";
 
 export default function Navbar() {
   return (
-    <header className="site-header">
+    <header className="border-b border-[#6f0f2d] bg-[#8A1538] text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link to="/" className="flex items-center gap-3 font-semibold">
-          <span className="brand-mark flex h-11 w-11 shrink-0 items-center justify-center rounded-md">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-white text-cranberry">
             <Utensils aria-hidden="true" size={25} strokeWidth={2.5} />
           </span>
           <span>
-            <span className="brand-name block text-2xl font-black leading-none">PennPlate</span>
-            <span className="mt-1 block max-w-[11rem] text-sm font-semibold leading-4 text-ink/55">
+            <span className="block text-2xl font-black leading-none tracking-normal">PennPlate</span>
+            <span className="mt-1 block max-w-[11rem] text-base font-semibold leading-5 text-white/75">
               Dining filters for campus days
             </span>
           </span>
         </Link>
-        <div className="flex items-center gap-2 sm:gap-3"><span className="source-note hidden whitespace-nowrap rounded-md px-3 py-2 text-sm font-semibold leading-none md:inline-flex">Penn Dining / Bon Appetit data</span><AuthControl /></div>
+        <div className="flex items-center gap-3"><span className="hidden whitespace-nowrap rounded-md border border-white/20 bg-white/10 px-4 py-3 text-lg font-medium leading-none text-white md:inline-flex">Penn Dining / Bon Appetit data</span><AuthControl /></div>
       </div>
     </header>
   );

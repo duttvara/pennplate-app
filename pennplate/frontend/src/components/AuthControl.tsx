@@ -10,7 +10,7 @@ export default function AuthControl() {
   const [message, setMessage] = useState("");
 
   if (!configured || loading) return null;
-  if (user) return <button type="button" onClick={() => void signOut()} className="auth-button rounded-md px-3 py-2 text-sm font-bold transition">Sign out</button>;
+  if (user) return <button type="button" onClick={() => void signOut()} className="text-sm font-bold text-white/90 hover:text-white">Sign out</button>;
 
   async function submit() {
     setMessage("");
@@ -26,7 +26,7 @@ export default function AuthControl() {
   }
 
   return <div className="relative">
-    <button type="button" onClick={() => setOpen(!open)} className="auth-button rounded-md px-3 py-2 text-sm font-bold transition sm:text-base">Log in / Sign up</button>
+    <button type="button" onClick={() => setOpen(!open)} className="rounded-md border border-white/30 px-4 py-3 text-lg font-black leading-none text-white hover:bg-white/10">Log in / Sign up</button>
     {open && <div className="absolute right-0 top-12 z-20 w-72 rounded-md border border-neutral bg-card p-4 text-ink shadow-lg">
       <p className="text-lg font-black">{mode === "login" ? "Welcome back" : "Create your account"}</p>
       <input aria-label="Email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Email" className="mt-3 w-full rounded-md border border-neutral px-3 py-2" />

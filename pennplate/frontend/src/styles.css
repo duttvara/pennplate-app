@@ -1,148 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   color-scheme: light;
-  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Hanken Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  --paper: #eee7dc;
-  --paper-light: #f7f3ec;
-  --card: #fffdf9;
-  --ink: #161514;
-  --muted: #6c6863;
-  --line: #d8d0c4;
-  --burgundy: #8a1538;
-  --burgundy-dark: #65102a;
+  text-rendering: geometricPrecision;
 }
-
-html { background: var(--paper); }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: #f1ece3;
   font-weight: 500;
 }
 
 button,
-a,
-input,
-select {
+a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button, a, input, select { font: inherit; }
-
-button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 2px solid var(--burgundy);
-  outline-offset: 3px;
-}
-
-.site-header {
-  background: var(--paper-light);
-  border-bottom: 1px solid var(--line);
-  color: var(--ink);
-}
-
-.brand-mark {
-  background: var(--burgundy);
-  color: #fffdf9;
-}
-
-.brand-name { letter-spacing: -0.04em; }
-
-.source-note {
-  border: 1px solid var(--line);
-  background: #e5ded3;
-  color: var(--ink);
-}
-
-.auth-button {
-  border: 1px solid var(--burgundy);
-  color: var(--burgundy);
-}
-
-.auth-button:hover { background: var(--burgundy); color: #fffdf9; }
-
-.page-wrap { position: relative; }
-
-.eyebrow {
-  letter-spacing: 0.11em;
-  font-size: 0.72rem;
-  line-height: 1;
-}
-
-.display-title { letter-spacing: -0.055em; }
-
-.panel,
-.hall-card,
-.menu-item,
-.metric-panel {
-  border: 1px solid var(--line);
-  background: var(--card);
-  box-shadow: 0 1px 1px rgba(22, 21, 20, 0.04), 0 8px 20px rgba(54, 43, 31, 0.035);
-}
-
-.panel { border-radius: 6px; }
-.hall-card, .menu-item, .metric-panel { border-radius: 5px; }
-
-.filter-label {
-  color: var(--muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-}
-
-.filter-divider {
-  height: 1px;
-  background: var(--line);
-}
-
-.filter-chip {
-  border-color: var(--line);
-  background: var(--card);
-  color: #48443f;
-}
-
-.filter-chip:hover { border-color: var(--burgundy); color: var(--burgundy); }
-.filter-chip[aria-pressed="true"] { border-color: var(--burgundy); background: var(--burgundy); color: #fffdf9; }
-
-.primary-action { background: var(--burgundy); }
-.primary-action:hover { background: var(--burgundy-dark); }
-
-.result-chip {
-  border: 1px solid var(--line);
-  background: #e5ded3;
-  color: #4f4a45;
-}
-
-.section-rule { border-color: var(--line); }
-
-.station-count {
-  background: var(--ink);
-  color: #fffdf9;
-}
-
-.muted-copy { color: var(--muted); }
-
-.badge-vegan { background: #f4d6df; color: var(--burgundy); }
-.badge-allergen { background: #e5ded3; color: #504a44; }
-.badge-unavailable { background: #dedad4; color: #68625b; }
-
 .fade-in {
-  animation: fade-in 320ms ease both;
+  animation: fade-in 420ms ease both;
 }
 
 .slide-up {
-  animation: slide-up 320ms cubic-bezier(.2,.8,.2,1) both;
+  animation: fade-in 220ms ease both;
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #e0d8cc 0%, #f7f3ec 45%, #e0d8cc 100%);
+  background: linear-gradient(90deg, #e5e1da 0%, #f5f2ed 45%, #e5e1da 100%);
   background-size: 220% 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -155,7 +42,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
