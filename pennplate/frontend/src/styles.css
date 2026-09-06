@@ -20,12 +20,48 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* PennPlate uses squared tabs and cards rather than pill-shaped controls. */
+.rounded-md { border-radius: 2px !important; }
+.rounded-lg { border-radius: 3px !important; }
+.rounded { border-radius: 1px !important; }
+
+button,
+a,
+select,
+input {
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease,
+    box-shadow 180ms ease, transform 180ms ease;
+}
+
+button:hover:not(:disabled),
+a:hover {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled),
+a:active {
+  transform: translateY(1px);
+}
+
 .fade-in {
   animation: fade-in 420ms ease both;
 }
 
 .slide-up {
-  animation: fade-in 220ms ease both;
+  animation: slide-up 380ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.grid > .slide-up:nth-child(2) { animation-delay: 70ms; }
+.grid > .slide-up:nth-child(3) { animation-delay: 140ms; }
+.grid > .slide-up:nth-child(4) { animation-delay: 210ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
 
 .skeleton {
