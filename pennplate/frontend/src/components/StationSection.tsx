@@ -9,9 +9,9 @@ interface StationSectionProps {
 export default function StationSection({ station }: StationSectionProps) {
   return (
     <section className="fade-in">
-      <div className="mb-4 flex items-center justify-between gap-4 border-b border-neutral pb-3">
-        <h2 className="text-2xl font-black uppercase leading-none">{formatStationName(station.name)}</h2>
-        <span className="rounded-md bg-ink px-3 py-2 text-sm font-bold leading-none text-white">
+      <div className="section-rule mb-4 flex items-center justify-between gap-4 border-b pb-3">
+        <h2 className="text-xl font-black uppercase leading-none tracking-wide sm:text-2xl">{formatStationName(station.name)}</h2>
+        <span className="station-count rounded-md px-3 py-2 text-xs font-bold leading-none">
           {station.matching_item_count} items
         </span>
       </div>

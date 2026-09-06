@@ -15,7 +15,7 @@ interface FilterPanelProps {
 
 export default function FilterPanel({ filters, onChange, onSubmit, compact = false }: FilterPanelProps) {
   return (
-    <section className={["rounded-lg border border-neutral bg-card p-4 shadow-soft sm:p-6", compact ? "" : "slide-up"].join(" ")}>
+    <section className={["panel p-4 sm:p-6", compact ? "" : "slide-up"].join(" ")}>
       <div className="grid gap-6">
         <DateSelector value={filters.date} onChange={(date) => onChange({ ...filters, date })} />
         <MealSelector value={filters.meal} onChange={(meal: Meal) => onChange({ ...filters, meal })} />
@@ -29,7 +29,7 @@ export default function FilterPanel({ filters, onChange, onSubmit, compact = fal
         <button
           type="button"
           onClick={onSubmit}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-cranberry px-5 py-3 text-base font-bold text-white transition hover:bg-ink focus:outline-none focus:ring-2 focus:ring-cranberry/35"
+          className="primary-action inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 py-3 text-base font-bold text-white transition hover:bg-ink"
         >
           <Search aria-hidden="true" size={18} />
           Find My Options

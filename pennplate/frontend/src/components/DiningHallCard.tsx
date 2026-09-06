@@ -10,7 +10,7 @@ interface DiningHallCardProps {
 
 export default function DiningHallCard({ option, filters }: DiningHallCardProps) {
   return (
-    <article className="slide-up flex h-full flex-col rounded-lg border border-neutral bg-card p-5 shadow-soft transition hover:border-cranberry/35">
+    <article className="hall-card slide-up flex h-full flex-col p-5 transition hover:border-cranberry/45">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
           <h2 className="text-2xl font-black leading-tight">{option.hall.name}</h2>
@@ -54,7 +54,7 @@ export default function DiningHallCard({ option, filters }: DiningHallCardProps)
 
       <Link
         to={`/hall/${option.hall.slug}?${filtersToSearch(filters)}`}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-cranberry px-4 py-2 font-bold text-white transition hover:bg-ink focus:outline-none focus:ring-2 focus:ring-cranberry/35"
+        className="primary-action inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-4 py-2 font-bold text-white transition hover:bg-ink"
       >
         View Menu
         <ArrowRight aria-hidden="true" size={17} />

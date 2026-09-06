@@ -23,11 +23,11 @@ export default function Home() {
   }
 
   return (
-    <div className="mx-auto grid max-w-4xl gap-6 px-4 py-8 sm:px-6 lg:py-12">
+    <div className="page-wrap mx-auto grid max-w-4xl gap-7 px-4 py-9 sm:px-6 lg:py-14">
       <section>
-        <p className="mb-2 text-sm font-black uppercase tracking-wide text-cranberry">PennPlate</p>
-        <h1 className="text-4xl font-black leading-tight text-ink sm:text-5xl">Dining Search</h1>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-ink/65">
+        <p className="eyebrow mb-3 font-black uppercase text-cranberry">PennPlate / Dining guide</p>
+        <h1 className="display-title text-4xl font-black leading-none text-ink sm:text-5xl">Find your plate.</h1>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-ink/65">
           Pick a date, meal, and dietary filters to compare Penn dining options.
         </p>
       </section>

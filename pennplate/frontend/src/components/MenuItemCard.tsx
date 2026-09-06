@@ -7,11 +7,11 @@ interface MenuItemCardProps {
 
 export default function MenuItemCard({ item }: MenuItemCardProps) {
   return (
-    <article className="rounded-lg border border-neutral bg-card p-5 shadow-soft">
+    <article className="menu-item p-4 sm:p-5">
       <div className="flex min-h-16 flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h3 className="text-xl font-black leading-tight">{item.name}</h3>
-          {item.description && <p className="mt-1 text-sm leading-6 text-ink/65">{item.description}</p>}
+          {item.description && <p className="muted-copy mt-1 text-sm leading-6">{item.description}</p>}
         </div>
         {item.calories !== null && <span className="shrink-0 self-end text-sm font-semibold text-ink/55">{item.calories} cal</span>}
       </div>
@@ -31,9 +31,9 @@ export default function MenuItemCard({ item }: MenuItemCardProps) {
 
 function Badge({ children, tone }: { children: string; tone: "green" | "amber" | "gray" }) {
   const styles = {
-    green: "bg-[#F8D7DF] text-cranberry",
-    amber: "bg-neutral text-ink/70",
-    gray: "bg-ink/10 text-ink/60"
+    green: "badge-vegan",
+    amber: "badge-allergen",
+    gray: "badge-unavailable"
   };
   return <span className={`rounded px-3 py-1.5 text-sm font-bold leading-none ${styles[tone]}`}>{children}</span>;
 }
